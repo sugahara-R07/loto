@@ -13,18 +13,44 @@ namespace Loto
         
         static void Main(string[] args)
         {
-            Loto7_Script _loto7 = new Loto7_Script();
-           
+            Loto_Script _loto = new Loto_Script();
+            const int LOTO6_MAX = 44;
+            const int LOTO7_MAX = 38;
+            const int LOTO6 = 6;
+            const int LOTO7 = 7;
+
             while (true)
             {
-                _loto7.loto7Ans(6,43);
-                _loto7.AnsWrite();
+                while (true)
+                {                  
+                    Console.Write("ロト6 or ロト7：");
+                    string loto = Console.ReadLine();
+
+                    if(loto == "6" || loto == "６")
+                    {
+                        _loto.lotoAns(LOTO6, LOTO6_MAX);
+                        break;
+                    }
+                    else if (loto == "7" || loto == "７")
+                    {
+                        _loto.lotoAns(LOTO7, LOTO7_MAX);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("6 or 7 を入力してください。");
+                    }
+                }
+
+                Console.ForegroundColor = ConsoleColor.Red;              
+                _loto.AnsWrite();
+                Console.ForegroundColor = ConsoleColor.Green;
 
                 Console.Write("やめるなら[1]を続けるならそれ以外を入力：");
                 string s = Console.ReadLine();
                 Console.WriteLine();
                 
-                if(s == "1")
+                if(s == "1" || s == "１")
                 {
                     break;
                 }
